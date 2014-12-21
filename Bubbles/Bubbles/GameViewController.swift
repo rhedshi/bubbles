@@ -34,7 +34,7 @@ class GameViewController: UIViewController {
         }
         
         if bubble != nil {
-            bubble!.removeFromSuperview()
+            bubble!.pop()
         }
         
         bubble = Bubble(color: self.randomColor(), position: self.randomPoint())

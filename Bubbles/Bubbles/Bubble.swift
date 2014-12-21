@@ -25,5 +25,27 @@ class Bubble: UIView {
     class func size() -> CGFloat {
         return width
     }
+    
+    func pop(scale: CGFloat = 2.0, duration: NSTimeInterval = 0.25) {
+        let w = scale * width
+        let p = (scale - 1) / 2 * width
+        let frame = CGRectMake(self.frame.origin.x - p, self.frame.origin.y - p, w, w)
+        let radius = frame.width / 2
+        
+        UIView.animateWithDuration(duration, animations: {
+            self.frame = frame
+            self.alpha = 0
+            }, completion: { finished in
+            self.removeFromSuperview()
+        })
+        
+        var animation: CABasicAnimation = CABasicAnimation(keyPath: "cornerRadius")
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.fromValue = self.layer.cornerRadius
+        animation.toValue = radius
+        animation.duration = duration
+        self.layer.cornerRadius = radius
+        self.layer.addAnimation(animation, forKey: "cornerRadius")
+    }
 
 }
