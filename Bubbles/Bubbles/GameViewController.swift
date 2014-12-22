@@ -14,10 +14,11 @@ class GameViewController: UIViewController {
     
     var bubble: Bubble?
     var score: Int = 0
-    var tapGestureRecognizer = UITapGestureRecognizer()
     var timer = NSTimer()
     var startTime = NSTimeInterval()
-    var timeLimit = NSTimeInterval(15.0 + 0.01)
+    
+    let tapGestureRecognizer = UITapGestureRecognizer()
+    let timeLimit = NSTimeInterval(15.0 + 0.01)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,9 +50,9 @@ class GameViewController: UIViewController {
     }
     
     func randomPoint() -> CGPoint {
-        var width: CGFloat = self.view.bounds.size.width
-        var height: CGFloat = self.view.bounds.size.height
-        var size: CGFloat = Bubble.size()
+        let width: CGFloat = self.view.bounds.size.width
+        let height: CGFloat = self.view.bounds.size.height
+        let size: CGFloat = Bubble.size()
         return CGPointMake(CGFloat(drand48()) * (width - 2 * size) + size, CGFloat(drand48()) * (height - 2 * size) + size)
     }
     
@@ -63,7 +64,7 @@ class GameViewController: UIViewController {
             timer.invalidate()
             bubble!.removeGestureRecognizer(tapGestureRecognizer)
             
-            var endViewController: EndViewController = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("EndViewController") as EndViewController
+            let endViewController: EndViewController = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("EndViewController") as EndViewController
             endViewController.updateScore(score)
             self.presentViewController(endViewController, animated: true, completion: nil)
         }

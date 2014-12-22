@@ -39,7 +39,7 @@ class Bubble: UIView {
             self.removeFromSuperview()
         })
         
-        var animation: CABasicAnimation = CABasicAnimation(keyPath: "cornerRadius")
+        let animation: CABasicAnimation = CABasicAnimation(keyPath: "cornerRadius")
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
         animation.fromValue = self.layer.cornerRadius
         animation.toValue = radius
