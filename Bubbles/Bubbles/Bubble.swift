@@ -8,14 +8,14 @@
 
 import UIKit
 
-let width: CGFloat = 54.0
+let length: CGFloat = 54.0
 
 class Bubble: UIView {
 
     init(color: UIColor, position: CGPoint) {
-        super.init(frame: CGRectMake(position.x, position.y, width, width))
+        super.init(frame: CGRect(x: position.x, y: position.y, width: length, height: length))
         self.backgroundColor = color
-        self.layer.cornerRadius = width / 2
+        self.layer.cornerRadius = length / 2
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -23,13 +23,13 @@ class Bubble: UIView {
     }
     
     class func size() -> CGFloat {
-        return width
+        return length
     }
     
     func pop(scale: CGFloat = 2.0, duration: NSTimeInterval = 0.25) {
-        let w = scale * width
-        let p = (scale - 1) / 2 * width
-        let frame = CGRectMake(self.frame.origin.x - p, self.frame.origin.y - p, w, w)
+        let s = scale * length
+        let p = (scale - 1) / 2 * length
+        let frame = CGRect(x: self.frame.origin.x - p, y: self.frame.origin.y - p, width: s, height: s)
         let radius = frame.width / 2
         
         UIView.animateWithDuration(duration, animations: {

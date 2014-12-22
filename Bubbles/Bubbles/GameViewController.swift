@@ -53,7 +53,7 @@ class GameViewController: UIViewController {
         let width: CGFloat = self.view.bounds.size.width
         let height: CGFloat = self.view.bounds.size.height
         let size: CGFloat = Bubble.size()
-        return CGPointMake(CGFloat(drand48()) * (width - 2 * size) + size, CGFloat(drand48()) * (height - 2 * size) + size)
+        return CGPoint(x: CGFloat(drand48()) * (width - 2 * size) + size, y: CGFloat(drand48()) * (height - 2 * size) + size)
     }
     
     func updateTime() {
